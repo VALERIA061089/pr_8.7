@@ -78,33 +78,35 @@ change = (maxValue > 1000) ? maxValue = 999 : maxValue = 1001;
 
 //Заново
 document.querySelector('#btnRetry').addEventListener('click', function () {
-    minValue = 0;
-    maxValue = 100;
-    orderNumber = 0;
-    answerNumber  = Math.floor((minValue + maxValue) / 2);
-    orderNumberField.innerText = orderNumber + 1;
-    answerField.innerText = `Вы загадали число ${answerNumber }?`;
-    
-    if (retry) {
-        firstModal.classList.add('modal-active');
-        secondModal.classList.remove('modal-active');
-        over.addEventListener('click');
-        less.addEventListener('click');
-        equal.addEventListener('click');
+    if (gameRun=true) {
+        minValue = 0;
+        maxValue = 100;
+        orderNumber = 0;
+        answerNumber  = Math.floor((minValue + maxValue) / 2);
+        orderNumberField.innerText = orderNumber + 1;
+        answerField.innerText = `Вы загадали число ${answerNumber }?`;
+        
+        if (retry) {
+            firstModal.classList.add('modal-active');
+            secondModal.classList.remove('modal-active');
+            over.classList.add('click');
+            less.addEventListener('click');
+            equal.addEventListener('click');
+        }
     }
+        let phraseRandom = Math.round(Math.random() * 3);
+        let answerPhrase;
+        if (phraseRandom === 1) {
+                            answerPhrase = `Вы загадали число ${answerNumber }?`;
+                            } else if (answerPhrase = (phraseRandom === 2)) {
+                            answerPhrase = `Так! Так! Это число ${answerNumber }?`;
+                            } else {
+                            answerPhrase = `А теперь ВНИМАНИЕ. Я знаю, что ты загадал число ${answerNumber }! Да?`;
+                            }
 
-    let phraseRandom = Math.round(Math.random() * 3);
-    let answerPhrase;
-    if (phraseRandom === 1) {
-                           answerPhrase = `Вы загадали число ${answerNumber }?`;
-                        } else if (answerPhrase = (phraseRandom === 2)) {
-                           answerPhrase = `Так! Так! Это число ${answerNumber }?`;
-                        } else {
-                           answerPhrase = `А теперь ВНИМАНИЕ. Я знаю, что ты загадал число ${answerNumber }! Да?`;
-                        }
+                            answerField.innerText = answerPhrase;
+    })
 
-                        answerField.innerText = answerPhrase;
-})
 
 //Больше
 document.querySelector('#btnOver').addEventListener('click', function () {
